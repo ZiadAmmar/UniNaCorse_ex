@@ -1,0 +1,41 @@
+Q: Determine how many topics are in the bag.
+A: Recorded topics + 3 topics from ros2cli daemon and ros2bag player 
+    RECORDED TOPICS:
+        /imu/acceleration
+        /imu/angular_velocity
+        /imu/data
+        /system_info
+        /zed2i/zed_node/left_gray/image_rect_gray
+    SYSTEM TOPICS:
+        /events/read_split
+        /parameter_events
+        /rosout
+    COMMANDS USED:
+        $ ros2 topic list
+        $ ros2 topic info -v [topic_name]
+================================
+Q: Determine the Hz of the topic image.
+A: ~30 hz
+    COMMANDS USED:
+        $ ros2 topic hz /zed2i/zed_node/left_gray/image_rect_gray
+================================
+Q: Determine the Hz of the topic system.
+A: 2 hz
+    COMMANDS USED:
+        $ ros2 topic hz /system_info 
+================================
+Q: Determine what does the topic system return.
+A: Message type: sysmonitor_interfaces/msg/Sysmon
+    CONTAINS:
+        float64 cpu_usage
+        float64 cpu_temp
+        float64 ram_usage
+        float64 gpu_usage
+        float64 gpu_temp
+        float64 gpuram_usage
+    COMMANDS USED:
+        $ ros2 topic info -v /system_info
+        $ ros2 interface show sysmonitor_interfaces/msg/Sysmon
+================================
+
+
