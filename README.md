@@ -43,3 +43,38 @@ ros2 run ex1 test_publisher
 ```
 
 ---
+
+## Exercise 2
+
+### Bugs Found and Fixes
+
+#### 1. Missing Dependency in CMakeLists.txt
+**Issue:** `sysmonitor_interfaces` package not found during build of `fault_detection`.
+
+**Solution:** Add the following line to `CMakeLists.txt`:
+```cmake
+find_package(sysmonitor_interfaces REQUIRED)
+```
+
+#### 2. Missing Semicolon in main.cpp
+**Issue:** Missing semicolon at the end of `using std::placeholders::_1`.
+
+**Solution:** Add semicolon after the using directive.
+
+#### 3. Incorrect Node Initialization
+**Issue:** Missing colon in the constructor initialization.
+
+**Solution:** Change to:
+```cpp
+MinimalSubscriber() : Node("minimal_subscriber")
+```
+
+#### 4. Unhandled Invalid Argument Error
+**Issue:** The node terminates due to an invalid argument error without proper error handling.
+
+**Solution:** Wrap the code in try-catch blocks to handle exceptions gracefully.
+
+📄 **[View main.cpp →](colcon_ws/src/fault_detection/src/main.cpp)**
+
+#### Catch Error Visualization
+![Catch Error](Images/catch_error.png)
